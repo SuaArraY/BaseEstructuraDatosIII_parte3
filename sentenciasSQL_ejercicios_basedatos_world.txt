@@ -1,0 +1,136 @@
+
+-- ===============================================================
+
+-- EJERCICIO 1:
+-- crear procedimiento para listar las ciudades:
+
+DROP PROCEDURE IF EXISTS `listar_ciudades`;
+DELIMITER $$
+USE world $$
+CREATE PROCEDURE listar_ciudades ()
+BEGIN 
+	SELECT name FROM city;
+END $$
+DELIMITER ;
+
+
+---------------------------------------------------------------
+-- Llamar al procedimiento del ejercicio 1:
+call world.enlistar_ciudades(); 
+
+-- ===============================================================
+
+-- EJERCICIO 2:
+
+-- crear el procedimiento para listar la ciudad pasandole el nombre de la ciudad
+
+-- usar la base de datos world
+
+USE world;
+DROP PROCEDURE IF EXISTS `buscar_pais_nombre`;
+USE world $$
+DELIMITER $$
+CREATE PROCEDURE `buscar_pais_nombre`(IN nombre_pais varchar(150))
+BEGIN
+SELECT name AS `Nombre Pais` FROM country WHERE Name = nombre_pais;
+END $$
+DELIMITER ;
+---------------------------------------------------------------
+-- Llamar al procedimiento del ejercicio 2:
+call world.buscar_pais_nombre('ARGENTINA'); 
+
+-- =============================================================
+
+-- EJERCICIO 3
+-- Desarrolle un procedimiento almacenado para mostrar el nombre de un pais, su ciudad y su idioma
+
+-- usar la base de datos world
+USE world;
+
+-- comprobamos que el procedimiento almacenado no exista y si existe que se modifique
+DROP PROCEDURE IF EXISTS `mostrar_pais_ciudad_idioma`;
+
+-- usar la base de datos world
+USE world $$
+
+-- el procedimiento almacenado lo delimitamos
+DELIMITER $$
+-- creacion del procedimiento almacenado, que acepte un parametro
+CREATE PROCEDURE `mostrar_pais_ciudad_idioma`()
+BEGIN
+-- ingresamos la sentencia SQL 
+	SELECT  country.name as pais, city.name AS ciudad,  countrylanguage.language as idioma
+    FROM city 
+    INNER JOIN 
+		country on city.CountryCode = country.Code 
+    INNER JOIN
+		countrylanguage ON country.Code= countrylanguage.CountryCode;  
+    
+END $$
+DELIMITER ;
+
+-- =============================================================
+-- EJERCICIO 4
+
+-- procedimiento almacenado donde puedas escribir el id de la orden y muestra el nombre y apellido del empleado
+-- que atendio como el nombre de la compañia
+
+-- usar la base de datos db_tienda
+USE db_tienda;
+
+-- comprobamos que el procedimiento almacenado no exista y si existe que se modifique
+DROP PROCEDURE IF EXISTS `mostrar_orden_datos_empleado_empresa`;
+
+-- usar la base de datos db_tienda
+USE db_tienda $$
+
+-- el procedimiento almacenado lo delimitamos
+DELIMITER $$
+-- creacion del procedimiento almacenado, que acepte un parametro
+CREATE PROCEDURE `mostrar_orden_datos_empleado_empresa`(IN num_orden INT)
+BEGIN
+-- ingresamos la sentencia SQL 
+	
+    SELECT orders.OrderID AS `Numero Orden` , employees.FirstName AS `Nombre`, employees.LastName AS `Apellido` , customers.CompanyName AS `Nombre Compañia` 
+    FROM orders
+    INNER JOIN 
+		employees ON orders.EmployeeID = employees.EmployeeID
+	INNER JOIN
+		customers ON orders.CustomerID = customers.CustomerID
+	
+	WHERE orders.OrderID = num_orden;
+    
+END $$
+DELIMITER ;
+
+
+-- =============================================================
+
+
+GUIA DE CREACION DEL PROCESAMIENTO ALMACENADO
+
+
+-- usar la base de datos 
+USE nombre_base_datos;
+
+-- comprobamos que el procedimiento almacenado no exista y si existe que se modifique
+DROP PROCEDURE IF EXISTS `nombre_procedimiento`;
+
+-- usar la base de datos world
+USE world $$
+
+-- el procedimiento almacenado lo delimitamos
+
+DELIMITER $$
+
+-- creacion del procedimiento almacenado, que acepte un parametro
+
+
+CREATE PROCEDURE `nombre_procedimiento`(IN nombre_variable varchar(150))
+BEGIN
+-- ingresamos la sentencia SQL y si aceptamos variables lo ingresamos
+SELECT nombre_columna  FROM nombre_tabla WHERE nombre_columna = nombre_variable;
+END $$
+DELIMITER ;
+
+-- =============================================================
