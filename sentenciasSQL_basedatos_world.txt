@@ -1,0 +1,10 @@
+EJERCICIO 1 :
+
+===============================================================
+-- usar la base de datos world
+DELIMITER //
+CREATE PROCEDURE listas_ciudades ()
+BEGIN 
+	SELECT name FROM city;
+END //
+DELIMITER 
