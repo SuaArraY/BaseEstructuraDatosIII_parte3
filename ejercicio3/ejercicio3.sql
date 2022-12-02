@@ -25,3 +25,6 @@ BEGIN
     
 END $$
 DELIMITER ;
+
+-- usamos el procedimiento ejercicio 3
+call world.mostrar_pais_ciudad_idioma();
