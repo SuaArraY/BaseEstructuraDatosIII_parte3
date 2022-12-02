@@ -29,3 +29,7 @@ BEGIN
     
 END $$
 DELIMITER ;
+
+
+-- ejecutamos  
+CALL db_tienda.mostrar_orden_datos_empleado_empresa(10258);

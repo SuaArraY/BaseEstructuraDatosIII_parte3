@@ -70,6 +70,10 @@ END $$
 DELIMITER ;
 
 -- =============================================================
+-- usamos el procedimiento ejercicio 3
+call world.mostrar_pais_ciudad_idioma();
+
+-- =============================================================
 -- EJERCICIO 4
 
 -- procedimiento almacenado donde puedas escribir el id de la orden y muestra el nombre y apellido del empleado
@@ -102,8 +106,9 @@ BEGIN
     
 END $$
 DELIMITER ;
-
-
+-- =============================================================
+-- ejecutamos el ejercicio 4
+CALL db_tienda.mostrar_orden_datos_empleado_empresa(10258);
 -- =============================================================
 
 
