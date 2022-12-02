@@ -18,7 +18,7 @@ CREATE PROCEDURE `mostrar_orden_datos_empleado_empresa`(IN num_orden INT)
 BEGIN
 -- ingresamos la sentencia SQL 
 	
-    SELECT orders.OrderID AS `Numero Orden` , employees.FirstName AS `Nombre`, employees.LastName AS `Apellido` , customers.CompanyName AS `Nombre Compañia` 
+    SELECT orders.OrderID AS `Numero Orden` , employees.FirstName AS `Nombre Empleado`, employees.LastName AS `Apellido Empleado` , customers.CompanyName AS `Nombre Compañia` 
     FROM orders
     INNER JOIN 
 		employees ON orders.EmployeeID = employees.EmployeeID
