@@ -1,14 +1,20 @@
 
--- EJERCICIO 1:
--- crear procedimiento para listar las ciudades:
-USE world ;
+-- EJERCICIO 1	
+-- usar la base de datos world
+USE world;
+
+-- comprobamos que el procedimiento almacenado no exista y si existe que se modifique
 DROP PROCEDURE IF EXISTS `listas_ciudades`;
-DELIMITER $$
+
+-- usar la base de datos world
 USE world $$
+
+-- el procedimiento almacenado lo delimitamos
+DELIMITER $$
+-- creacion del procedimiento almacenado
 CREATE PROCEDURE listas_ciudades ()
-BEGIN 
+BEGIN
+-- ingresamos la sentencia SQL 
 	SELECT name FROM city;
 END $$
 DELIMITER ;
-
-

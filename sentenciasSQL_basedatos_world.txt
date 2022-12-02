@@ -1,5 +1,4 @@
 
-
 -- ===============================================================
 
 -- EJERCICIO 1:
@@ -40,4 +39,30 @@ DELIMITER ;
 -- Llamar al procedimiento del ejercicio 2:
 call world.buscar_pais_nombre('ARGENTINA'); 
 
--- ===============================================================
+-- =============================================================
+GUIA DE CREACION DEL PROCESAMIENTO ALMACENADO
+
+
+-- usar la base de datos 
+USE nombre_base_datos;
+
+-- comprobamos que el procedimiento almacenado no exista y si existe que se modifique
+DROP PROCEDURE IF EXISTS `nombre_procedimiento`;
+
+-- usar la base de datos world
+USE world $$
+
+-- el procedimiento almacenado lo delimitamos
+
+DELIMITER $$
+
+-- creacion del procedimiento almacenado, que acepte un parametro
+
+
+CREATE PROCEDURE `nombre_procedimiento`(IN nombre_variable varchar(150))
+BEGIN
+-- ingresamos la sentencia SQL y si aceptamos variables lo ingresamos
+SELECT nombre_columna  FROM nombre_tabla WHERE nombre_columna = nombre_variable;
+END $$
+DELIMITER ;
+
